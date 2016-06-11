@@ -1,0 +1,355 @@
+<html>
+	<head>
+		<title>Kernel Exploit - Loadiine GX2</title>
+		<link rel="shortcut icon" href="favicon.ico" />
+    	<meta name="author" content="Poroto" />
+		<style type="text/css">
+			/* Fondo animado */
+			@-webkit-keyframes flotan{
+			   from {top: 110%;}
+			   to {top: 0%;}
+			}
+			@keyframes flotan{
+			   from {bottom: -10px;}
+			   to {bottom: 100%;}
+			}
+
+			@-webkit-keyframes burbujas{
+				0% { -webkit-transform: rotate(-180deg) translate(0px, 0px);}
+				100% { -webkit-transform: rotate(180deg) translate(10px, 75px);}
+			}
+			@keyframes burbujas{
+				0% { transform: rotate(-180deg) translate(0px, 0px);}
+				100% { transform: rotate(180deg) translate(10px, 75px);}
+			}
+
+			.burbujas {
+			   color: #FF0000;
+			   position: absolute;
+			   z-index:-1;
+			   font-size:0px;
+			   display:block;
+			   border-radius:10px;
+			   width:20px;
+			   height:20px;
+			   background: rgba(255,255,255,.5)
+			}
+
+			.burbujas.f1 {
+			   left: -5px;
+			   -webkit-animation-duration: 5s;
+			   animation-duration: 5s;
+			}
+
+			.burbujas.f2 {
+			   left: 60px;
+			   -webkit-animation-duration: 7s;
+			   animation-duration: 7s;
+			   border-radius:40px;
+			   width:40px;
+			   height:40px;
+			   opacity:.8
+			}
+
+			.burbujas.f3 {
+			   left: 130px;
+			   -webkit-animation-duration: 8s;
+			   animation-duration: 8s;
+			   border-radius:80px;
+			   width:80px;
+			   height:80px;
+			   opacity:.3
+			}
+			.burbujas.f4 {
+			   font-size: 1.5em;
+			   left: 200px;
+			   -webkit-animation-duration: 6s;
+			   animation-duration: 6s;
+			   border-radius:50px;
+			   width:50px;
+			   height:50px;
+			   opacity: .4
+			}
+
+			.burbujas.f5 {
+			   left: 340px;
+			   -webkit-animation-duration: 11s;
+			   animation-duration: 11s;
+			}
+
+			.burbujas.f6 {
+			   left: 380px;
+			   -webkit-animation-duration: 9s;
+			   animation-duration: 9s;
+			   border-radius:30px;
+			   width:30px;
+			   height:30px;
+			   opacity:.2
+			}
+
+			.burbujas.f7 {
+			   left: 560px;
+			   -webkit-animation-duration: 14s;
+			   animation-duration: 14s;
+			   border-radius:60px;
+			   width:60px;
+			   height:60px;
+			   opacity:.6
+			}
+
+			.burbujas.f8 {
+			   left: 740px;
+			   -webkit-animation-duration: 5s;
+			   animation-duration: 5s;
+			   border-radius:60px;
+			   width:60px;
+			   height:60px;
+			   opacity:.1
+			}
+
+			.burbujas.f9 {
+			   left: 840px;
+			   -webkit-animation-duration: 8s;
+			   animation-duration: 8s;
+			}
+
+			.burbujas.f10 {
+			   left: 940px;
+			   -webkit-animation-duration: 13s;
+			   animation-duration: 13s;
+			   border-radius:10px;
+			   width:10px;
+			   height:10px;
+			   opacity:.6
+			}
+
+			.burbujas.f11 {
+			   left: 1140px;
+			   -webkit-animation-duration: 12s;
+			   animation-duration: 12s;
+			}
+
+			.burbujas.f12 {
+			   left: 1200px;
+			   -webkit-animation-duration: 8s;
+			   animation-duration: 8s;
+			   border-radius:70px;
+			   width:70px;
+			   height:70px;
+			   opacity:.8
+			}
+
+			.burbujas.f13 {
+			   left: 1260px;
+			   -webkit-animation-duration: 5s;
+			   animation-duration: 5s;
+			}
+
+			.burbujas.f14 {
+			   left: 1300px;
+			   -webkit-animation-duration: 4s;
+			   animation-duration: 4s;
+			   border-radius:30px;
+			   width:30px;
+			   height:30px;
+			   opacity:.6
+			}
+
+			.burbujas.f15 {
+			   left: 1360px;
+			   -webkit-animation-duration: 7s;
+			   animation-duration: 7s;
+			   border-radius:90px;
+			   width:90px;
+			   height:90px;
+			   opacity:.2
+			}
+
+			.burbujas.f16 {
+			   left: 1460px;
+			   -webkit-animation-duration: 10s;
+			   animation-duration: 10s;
+			   border-radius:20px;
+			   width:20px;
+			   height:20px;
+			   opacity:.3
+			}
+
+			#circulos div {
+			   position: fixed;
+			   bottom: -40px;
+			   z-index:-1;
+
+			   animation-name: flotan, burbujas;
+			   animation-iteration-count: infinite;
+			   animation-direction: normal;
+			   animation-timing-function: ease-in;
+
+			   -webkit-animation-name: flotan, burbujas;
+			   -webkit-animation-iteration-count: infinite;
+			   -webkit-animation-direction: normal;
+			   -webkit-animation-timing-function: ease-in;
+			}
+			/* Fin Fondo animado */
+
+			/* pulso click botones */
+			@-webkit-keyframes pulse {
+				from {
+				  -webkit-transform: scale(1.0);
+				}
+				50% {
+				  -webkit-transform: scale(1.3);
+				}
+				to {
+				  -webkit-transform: scale(1.0);
+				}
+			}
+			@keyframes pulse {
+				from {
+				  transform: scale(1.0);
+				}
+				50% {
+				  transform: scale(1.3);
+				}
+				to {
+				  transform: scale(1.0);
+				}
+			}
+			.Estilo1:hover, .Estilo1:focus, .descargas p a:hover, .descargas p a:focus{
+				-webkit-animation-name: pulse;
+				-webkit-animation-duration: 0.5s;
+				-webkit-animation-iteration-count: 1;
+
+				animation-name: pulse;
+				animation-duration: 0.5s;
+				animation-iteration-count: 1;
+			}
+			/* Fin pulso click botones */
+
+			html, body{width: 100%; height:100%; overflow:hidden}
+			body{
+				background: -webkit-radial-gradient(center, ellipse cover,  rgba(127,127,127,1) 0%,rgba(0,0,0,1) 100%) fixed;
+				background: -moz-radial-gradient(center, ellipse cover,  rgba(127,127,127,1) 0%,rgba(0,0,0,1) 100%) fixed;
+				background: -ms-radial-gradient(center, ellipse cover,  rgba(127,127,127,1) 0%,rgba(0,0,0,1) 100%) fixed;
+				background: radial-gradient(center, ellipse cover,  rgba(127,127,127,1) 0%,rgba(0,0,0,1) 100%) fixed;
+			}
+			@font-face {
+				font-family: 'horatio';
+				src:url('font.ttf') format('truetype'); /* navegadores CSS3 */
+				font-weight: normal;
+				font-style: normal;
+			}
+			.Estilo1 {
+				font-family: horatio, Geneva, Arial, Helvetica, sans-serif;
+				font-size: 24px;
+				text-align: center;
+				font-weight: bold;
+				padding: 30px;
+				display:block
+			}
+			.Estilo1 a{
+				text-decoration:none;
+				background: rgba(0,0,0,.5);
+				padding:10px 15px 10px 0px;
+				box-shadow: rgba(0,0,0,.5) -5px -5px 5px inset;
+				border-radius: 30px 10px 10px 30px;
+				color:#FFFFFF;
+				text-shadow: rgba(0,0,0,.5) 5px 5px 5px
+			}
+			.boton{
+				font-family: Geneva, Arial, Helvetica, sans-serif;
+				font-size:30px;
+				line-height:30px;
+				padding: 30px;
+				display:inline-block;
+				border-radius: 60px;
+				width: 30px;
+				height: 30px;
+				box-shadow: rgba(0,0,0,.5) 5px 5px 5px, rgba(0,0,0,.5) -5px -5px 5px inset;
+				text-shadow:none
+			}
+			.a{
+				background: green;
+				color:#003507
+			}
+			.b{
+				background: red;
+				color:#760001
+			}
+			.acceso{ 
+				position:fixed; 
+				left: 50%; 
+				margin-left: -168px; 
+				top: 50%; 
+				margin-top: -177px; 
+			}
+			.descargas{ 
+				position:fixed; 
+				bottom:5px; 
+				left:50%; 
+				margin-left:-254px; 
+			}
+			.descargas p a{
+				font-family: horatio, Geneva, Arial, Helvetica, sans-serif;
+				font-size: 15px;
+				text-align: center;
+				padding: 10px;
+				display:inline-block;
+				
+				text-decoration: none !important;
+				background: rgba(0,0,0,.5);
+				box-shadow: rgba(0,0,0,.5) -5px -5px 5px inset;
+				border-radius: 10px;
+				color:#FFFFFF;
+				text-shadow: rgba(0,0,0,.5) 5px 5px 5px
+			}
+		</style>
+	</head>
+	<body onLoad="document.getElementById('bgm').play(); document.getElementById('bgm').volume=1">
+    	<div class="acceso">
+            <p class="Estilo1">
+                <a href="kernelloadine550.mp4" onclick="clic.play()">
+                    <span class="boton a">A</span> &nbsp;KERNEL EXPLOIT
+                </a>
+            </p>
+            <p class="Estilo1">
+                <a href="loadine550.mp4" onclick="clic.play()">
+                    <span class="boton b">B</span> &nbsp;LOADIINE GX2
+                </a>
+            </p>
+        </div>
+        
+        <div class="descargas">
+        	<p>
+            	<a href="https://github.com/dimok789/loadiine_gx2/releases" target="_blank">Descargar Loadiine GX2</a>
+            	<a href="https://github.com/dimok789/homebrew_launcher/releases" target="_blank">Descargar Homebrew Launcher</a>
+            	<a href="https://github.com/PorotoX/PoroDisenio/releases" target="_blank">Descargar PoroDise&ntilde;o</a>
+            </p>
+        </div>
+
+        <div id="circulos">
+           <div class="burbujas f1"></div>
+           <div class="burbujas f2"></div>
+           <div class="burbujas f3"></div>
+           <div class="burbujas f4"></div>
+
+           <div class="burbujas f5"></div>
+           <div class="burbujas f6"></div>
+           <div class="burbujas f7"></div>
+           <div class="burbujas f8"></div>
+
+           <div class="burbujas f9"></div>
+           <div class="burbujas f10"></div>
+           <div class="burbujas f11"></div>
+           <div class="burbujas f12"></div>
+
+           <div class="burbujas f13"></div>
+           <div class="burbujas f14"></div>
+           <div class="burbujas f15"></div>
+           <div class="burbujas f16"></div>
+        </div>
+		<audio id="bgm" src="bgMusic.ogg" autoplay loop></audio>
+		<audio id="clic" src="game_click.mp3" preload="auto"></audio>
+	</body>
+</html>
+<!-- Diseño por POROTO - poro.ferreira@gmail.com -->
